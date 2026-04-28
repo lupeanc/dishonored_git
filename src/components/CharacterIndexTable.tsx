@@ -54,9 +54,19 @@ const CharacterIndexTable = () => {
     });
   };
 
-  // const addCharacter = (newCharacter: CharacterType) => {
-  //   fetch(`https://localhost:7018/Character/`)
-  // }
+  const addCharacter = (newCharacter: CharacterType) => {
+    fetch(`https://localhost:7018/Character/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        newCharacter,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+  };
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,6 +99,7 @@ const CharacterIndexTable = () => {
       setCharacters(updated);
       setEditIndex(null);
     } else {
+      addCharacter(newCharacter);
       setCharacters([...characters, newCharacter]);
     }
 
