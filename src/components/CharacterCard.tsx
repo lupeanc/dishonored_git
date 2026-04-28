@@ -2,13 +2,14 @@
 import "./CharacterCard.css";
 
 const CharacterCard = ({ character }) => {
+  // console.log(character.imagePath);
   return (
     <>
       <div className="character-card-div">
         <div className="flex-container-character-card">
           <div className="image-container-character-card">
             <img
-              src={character.image}
+              src={character.imagePath}
               alt=""
               className="image-fit-character-card"
             ></img>

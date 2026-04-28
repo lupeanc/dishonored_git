@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
 import "./CharacterIndexPage.css";
+import { useEffect, useState } from "react";
 
 export type CharacterType = {
   name: string;
   nickname: string;
   age: number;
   job: string;
-  image: string;
+  imagePath: string;
 };
 
-const CharacterIndexPage = ({ isAdmin, characterList }) => {
+const CharacterIndexPage = ({ isAdmin }) => {
   // const characters: Array<CharacterType> = [
   //   {
   //     name: "Knightu ba",
@@ -41,8 +42,28 @@ const CharacterIndexPage = ({ isAdmin, characterList }) => {
   //     image: "../assets/hero.png",
   //   },
   // ];
+  // var characters = Array<CharacterType>();
 
-  const characters = characterList;
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    fetch("https://localhost:7018/Character")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          // setCharacters(result.Name);
+          setCharacters(result);
+          console.log(characters);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+  }, []);
+
+  console.log(characters);
+
+  // const characters = characterList;
 
   return (
     <>

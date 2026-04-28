@@ -1,7 +1,21 @@
+import { useEffect } from "react";
 import ImagePreview from "../components/ImagePreview";
 import "./SilliesPage.css";
 
 const SilliesPage = () => {
+  useEffect(() => {
+    fetch("https://localhost:7018/Silly")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+  }, []);
+
   return (
     <>
       <div className="main-div-sillies-page">

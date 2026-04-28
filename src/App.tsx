@@ -15,9 +15,7 @@ import CharacterIndexPage from "./pages/CharacterIndexPage";
 import ContactCard from "./components/ContactCard";
 import AboutPage from "./pages/AboutPage";
 import SketchesPage from "./pages/SketchesPage";
-import CharacterIndexTable, {
-  type CharacterType,
-} from "./components/CharacterIndexTable";
+import CharacterIndexTable from "./components/CharacterIndexTable";
 import ChaptersPage from "./pages/ChaptersPage";
 import {
   createBrowserRouter,
@@ -33,36 +31,36 @@ import UserProfilePage from "./pages/UserProfilePage";
 import UserProfileEdit from "./components/UserProfileEdit";
 import SilliesPage from "./pages/SilliesPage";
 
-const characters: Array<CharacterType> = [
-  {
-    name: "Knightu ba",
-    nickname: "Knightu ba",
-    age: 28,
-    job: "..knight gen",
-    image: "../assets/hero.png",
-  },
-  {
-    name: "Knightu ba",
-    nickname: "Knightu ba",
-    age: 28,
-    job: "..knight gen",
-    image: "../assets/hero.png",
-  },
-  {
-    name: "Knightu ba",
-    nickname: "Knightu ba",
-    age: 28,
-    job: "..knight gen",
-    image: "../assets/hero.png",
-  },
-  {
-    name: "Knightu ba",
-    nickname: "Knightu ba",
-    age: 28,
-    job: "..knight gen",
-    image: "../assets/hero.png",
-  },
-];
+// const characters: Array<CharacterType> = [
+//   {
+//     name: "Knightu ba",
+//     nickname: "Knightu ba",
+//     age: 28,
+//     job: "..knight gen",
+//     imagePath: "../assets/hero.png",
+//   },
+//   {
+//     name: "Knightu ba",
+//     nickname: "Knightu ba",
+//     age: 28,
+//     job: "..knight gen",
+//     imagePath: "../assets/hero.png",
+//   },
+//   {
+//     name: "Knightu ba",
+//     nickname: "Knightu ba",
+//     age: 28,
+//     job: "..knight gen",
+//     imagePath: "../assets/hero.png",
+//   },
+//   {
+//     name: "Knightu ba",
+//     nickname: "Knightu ba",
+//     age: 28,
+//     job: "..knight gen",
+//     imagePath: "../assets/hero.png",
+//   },
+// ];
 
 const isAdmin = true;
 const username = "claylex-shipper73";
@@ -76,9 +74,7 @@ const router = createBrowserRouter(
       <Route path="/chapters" element={<ChaptersPage />} />
       <Route
         path="/character-index"
-        element={
-          <CharacterIndexPage isAdmin={isAdmin} characterList={characters} />
-        }
+        element={<CharacterIndexPage isAdmin={isAdmin} />}
       />
       <Route
         path="/character-index-table"

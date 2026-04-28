@@ -1,27 +1,37 @@
+import type { CharacterType } from "../types/CharacterType";
 import "./CharacterIndexTable.css";
-import React, { useState } from "react";
-// import validator from "validator";
-
-export type CharacterType = {
-  name: string;
-  nickname: string;
-  age: number;
-  job: string;
-  image: string;
-};
+import React, { useEffect, useState } from "react";
 
 const CharacterIndexTable = () => {
-  const characters: Array<CharacterType> = [
-    {
-      name: "Knightu ba",
-      nickname: "Knightu ba",
-      age: 28,
-      job: "..knight gen",
-      image: "../assets/hero.png",
-    },
-  ];
+  // const characters: Array<CharacterType> = [
+  //   {
+  //     name: "Knightu ba",
+  //     nickname: "Knightu ba",
+  //     age: 28,
+  //     job: "..knight gen",
+  //     image: "../assets/hero.png",
+  //   },
+  // ];
 
-  const [data, setData] = useState<CharacterType[]>(characters);
+  const [characters, setCharacters] = useState<CharacterType[]>([]);
+
+  useEffect(() => {
+    fetch("https://localhost:7018/Character")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setCharacters(result);
+          // console.log(result);
+          // console.log(characters);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+  }, []);
+
+  // console.log(characters);
+
   const [error, setError] = useState<string>("");
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
@@ -46,18 +56,18 @@ const CharacterIndexTable = () => {
       nickname,
       age: Number(age),
       job,
-      image,
+      imagePath: "",
     };
 
     // if in edit mode: ... if not => add
     // this way i can also check the inputs from the edits.
     if (editIndex !== null) {
-      const updated = [...data];
+      const updated = [...characters];
       updated[editIndex] = newCharacter;
-      setData(updated);
+      setCharacters(updated);
       setEditIndex(null);
     } else {
-      setData([...data, newCharacter]);
+      setCharacters([...characters, newCharacter]);
     }
 
     // clear form
@@ -69,18 +79,18 @@ const CharacterIndexTable = () => {
   };
 
   const handleRemove = (index: number) => {
-    const updated = data.filter((_, i) => i !== index);
-    setData(updated);
+    const updated = characters.filter((_, i) => i !== index);
+    setCharacters(updated);
   };
 
   const handleEdit = (index: number) => {
-    const character = data[index];
+    const character = characters[index];
 
     setName(character.name);
     setNickname(character.nickname);
     setAge(String(character.age));
     setJob(character.job);
-    setImage(character.image);
+    setImage(character.imagePath);
 
     setEditIndex(index);
   };
@@ -154,13 +164,13 @@ const CharacterIndexTable = () => {
           </thead>
 
           <tbody>
-            {data.map((character, index) => (
+            {characters.map((character, index) => (
               <tr key={index}>
                 <td>{character.name}</td>
                 <td>{character.nickname}</td>
                 <td>{character.age}</td>
                 <td>{character.job}</td>
-                <td>{character.image}</td>
+                <td>{character.imagePath}</td>
                 <td>
                   <button
                     className="action-button"
