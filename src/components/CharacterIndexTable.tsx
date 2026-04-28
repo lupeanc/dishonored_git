@@ -78,9 +78,18 @@ const CharacterIndexTable = () => {
     setImage("");
   };
 
+  const removeCharacter = (name: string) => {
+    fetch(`https://localhost:7018/Character/DeleteCharacter/${name}`, {
+      method: "DELETE",
+    });
+  };
+
   const handleRemove = (index: number) => {
     const updated = characters.filter((_, i) => i !== index);
     setCharacters(updated);
+    const removedCharacterName = characters[index].name;
+    // console.log(removedCharacterName);
+    removeCharacter(removedCharacterName);
   };
 
   const handleEdit = (index: number) => {

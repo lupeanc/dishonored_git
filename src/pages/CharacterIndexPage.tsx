@@ -3,14 +3,6 @@ import CharacterCard from "../components/CharacterCard";
 import "./CharacterIndexPage.css";
 import { useEffect, useState } from "react";
 
-export type CharacterType = {
-  name: string;
-  nickname: string;
-  age: number;
-  job: string;
-  imagePath: string;
-};
-
 const CharacterIndexPage = ({ isAdmin }) => {
   // const characters: Array<CharacterType> = [
   //   {
@@ -53,15 +45,13 @@ const CharacterIndexPage = ({ isAdmin }) => {
         (result) => {
           // setCharacters(result.Name);
           setCharacters(result);
-          console.log(characters);
+          // console.log(characters);
         },
         (error) => {
           console.log(error);
         },
       );
   }, []);
-
-  console.log(characters);
 
   // const characters = characterList;
 
