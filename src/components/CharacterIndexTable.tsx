@@ -39,7 +39,24 @@ const CharacterIndexTable = () => {
   const [nickname, setNickname] = useState("");
   const [age, setAge] = useState("");
   const [job, setJob] = useState("");
-  const [image, setImage] = useState("");
+  const [imagePath, setImagePath] = useState("");
+
+  const updateCharacter = (name: string, updatedCharacter: CharacterType) => {
+    // console.log(JSON.stringify({ updatedCharacter }));
+    fetch(`https://localhost:7018/Character/UpdateCharacter/${name}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        updatedCharacter,
+      }),
+    });
+  };
+
+  // const addCharacter = (newCharacter: CharacterType) => {
+  //   fetch(`https://localhost:7018/Character/`)
+  // }
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,18 +69,23 @@ const CharacterIndexTable = () => {
     setError("");
 
     const newCharacter: CharacterType = {
-      name,
-      nickname,
+      name: name,
+      nickname: nickname,
       age: Number(age),
-      job,
-      imagePath: "",
+      job: job,
+      imagePath: imagePath,
     };
 
     // if in edit mode: ... if not => add
     // this way i can also check the inputs from the edits.
     if (editIndex !== null) {
+      const updatedCharacterName = characters[editIndex].name;
+
       const updated = [...characters];
       updated[editIndex] = newCharacter;
+
+      const updatedCharacter = updated[editIndex];
+      updateCharacter(updatedCharacterName, updatedCharacter);
       setCharacters(updated);
       setEditIndex(null);
     } else {
@@ -75,7 +97,7 @@ const CharacterIndexTable = () => {
     setNickname("");
     setAge("");
     setJob("");
-    setImage("");
+    setImagePath("");
   };
 
   const removeCharacter = (name: string) => {
@@ -94,12 +116,17 @@ const CharacterIndexTable = () => {
 
   const handleEdit = (index: number) => {
     const character = characters[index];
+    // const updatedCharacterName = character.name;
 
     setName(character.name);
     setNickname(character.nickname);
     setAge(String(character.age));
     setJob(character.job);
-    setImage(character.imagePath);
+    setImagePath(character.imagePath);
+
+    // const updatedCharacter = characters[index];
+
+    // updateCharacter(updatedCharacterName, updatedCharacter);
 
     setEditIndex(index);
   };
@@ -147,13 +174,13 @@ const CharacterIndexTable = () => {
               type="text"
               placeholder="Enter Image Path"
               className="form-field"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              value={imagePath}
+              onChange={(e) => setImagePath(e.target.value)}
             />
             <button
               type="submit"
               className="action-button"
-              disabled={!name || !age || !job || !image}
+              disabled={!name || !age || !job || !imagePath}
             >
               Add
             </button>
