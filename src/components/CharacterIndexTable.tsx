@@ -41,8 +41,13 @@ const CharacterIndexTable = () => {
   const [job, setJob] = useState("");
   const [imagePath, setImagePath] = useState("");
 
-  const updateCharacter = (name: string, updatedCharacter: CharacterType) => {
+  const updateCharacter = (
+    name: string,
+    updatedCharacter: CharacterType,
+    updated,
+  ) => {
     // console.log(JSON.stringify({ updatedCharacter }));
+    setError("");
     fetch(`https://localhost:7018/Character/UpdateCharacter/${name}`, {
       method: "PUT",
       headers: {
@@ -51,10 +56,23 @@ const CharacterIndexTable = () => {
       body: JSON.stringify({
         updatedCharacter,
       }),
-    });
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          if (result.error) {
+            setError(result.error);
+          } else {
+            setCharacters(updated);
+          }
+          console.log(result);
+        },
+        (error) => console.log(error),
+      );
   };
 
   const addCharacter = (newCharacter: CharacterType) => {
+    setError("");
     fetch(`https://localhost:7018/Character/`, {
       method: "POST",
       headers: {
@@ -65,18 +83,28 @@ const CharacterIndexTable = () => {
       }),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then(
+        (result) => {
+          if (result.error) {
+            setError(result.error);
+          } else {
+            setCharacters([...characters, result]);
+          }
+          console.log(result);
+        },
+        (error) => console.log(error),
+      );
   };
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (Number(age) <= 0 || Number(age) > 100) {
-      setError("Age must be greater than 0, and smaller than 100 (cmon bro.)");
-      return;
-    }
+    // if (Number(age) <= 0 || Number(age) > 100) {
+    //   setError("Age must be greater than 0, and smaller than 100 (cmon bro.)");
+    //   return;
+    // }
 
-    setError("");
+    // setError("");
 
     const newCharacter: CharacterType = {
       name: name,
@@ -95,12 +123,14 @@ const CharacterIndexTable = () => {
       updated[editIndex] = newCharacter;
 
       const updatedCharacter = updated[editIndex];
-      updateCharacter(updatedCharacterName, updatedCharacter);
-      setCharacters(updated);
+      updateCharacter(updatedCharacterName, updatedCharacter, updated);
+
+      // updateCharacter(editIndex, newCharacter);
+
+      // setCharacters(updated);
       setEditIndex(null);
     } else {
       addCharacter(newCharacter);
-      setCharacters([...characters, newCharacter]);
     }
 
     // clear form
@@ -191,7 +221,7 @@ const CharacterIndexTable = () => {
             <button
               type="submit"
               className="action-button"
-              disabled={!name || !age || !job || !imagePath}
+              disabled={!name || !age}
             >
               Add
             </button>
