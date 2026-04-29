@@ -1,5 +1,6 @@
 .main-div-character-index {
     margin-top:20px;
+    color: rgb(210, 213, 221);
 }
 
 .characters-container{
@@ -24,4 +25,38 @@
 
 .edit-button-character-index-admin:hover {
     background-color: rgb(34, 36, 53)
+}
+
+.pagination-nav-container {
+    place-items: center;
+}
+
+.pagination-nav-buttons-container {
+    display: flex;
+    padding:20px
+}
+
+.pagination-nav-outof {
+    color:rgb(96, 97, 104);
+    font-size: 0.9em;
+}
+
+.pagination-nav-button {
+    margin: 0 20px 0 20px;
+    border:0;
+    background-color: rgb(27, 27, 32);
+    color:white;
+    text-decoration: none;
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.pagination-nav-button:hover {
+    background-color: rgb(34, 36, 53)
+}
+
+.pagination-nav-button:disabled {
+    background-color: rgb(34, 36, 53);
+    color: rgb(110, 108, 133);
 }

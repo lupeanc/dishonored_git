@@ -36,16 +36,20 @@ const CharacterIndexPage = ({ isAdmin }) => {
   // ];
   // var characters = Array<CharacterType>();
 
-  const [characters, setCharacters] = useState([]);
+  // const [characters, setCharacters] = useState([]);
+  const [charactersOfPage, setCharactersOfPage] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagesTotal, setPagesTotal] = useState(0);
 
+  // get number of pages
   useEffect(() => {
-    fetch("https://localhost:7018/Character")
+    fetch(`https://localhost:7018/Character/GetPagesNumber`)
       .then((res) => res.json())
       .then(
         (result) => {
-          // setCharacters(result.Name);
-          setCharacters(result);
-          // console.log(characters);
+          setPagesTotal(result.pagesTotal);
+          console.log(result);
+          // pagesTotal = result;
         },
         (error) => {
           console.log(error);
@@ -53,7 +57,22 @@ const CharacterIndexPage = ({ isAdmin }) => {
       );
   }, []);
 
-  // const characters = characterList;
+  // get number of results per page
+  useEffect(() => {
+    fetch(`https://localhost:7018/Character/page/${currentPage}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          if (result.length > 0) {
+            setCharactersOfPage(result);
+          }
+          // console.log(characters);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+  }, [currentPage]);
 
   return (
     <>
@@ -71,9 +90,36 @@ const CharacterIndexPage = ({ isAdmin }) => {
           )}
         </div>
         <div className="characters-container">
-          {characters.map((character) => (
+          {charactersOfPage.map((character) => (
             <CharacterCard character={character} />
           ))}
+        </div>
+      </div>
+      <div className="pagination-nav-container">
+        <div className="pagination-nav-buttons-container">
+          <button
+            className="pagination-nav-button"
+            onClick={() => {
+              setCurrentPage((page) => page - 1);
+            }}
+            disabled={currentPage == 1}
+          >
+            Previous
+          </button>
+
+          <div className="pagination-nav-outof">
+            {currentPage} of {pagesTotal}
+          </div>
+
+          <button
+            className="pagination-nav-button"
+            onClick={() => {
+              setCurrentPage((page) => page + 1);
+            }}
+            disabled={currentPage == pagesTotal}
+          >
+            Next
+          </button>
         </div>
       </div>
     </>
