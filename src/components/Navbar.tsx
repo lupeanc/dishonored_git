@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import heroImg from "../assets/hero.png";
+// import heroImg from "../assets/hero.png";
+import mock_pfp from "/mock_pfp.png";
 import "./Navbar.css";
 // import { motion } from "motion/react";
 
@@ -28,6 +29,9 @@ const Navbar = () => {
               <NavLink to="/sillies" className="dropdown-more-navlink">
                 Sillies
               </NavLink>
+              <NavLink to="/polls" className="dropdown-more-navlink">
+                Polls
+              </NavLink>
               <NavLink to="/about" className="dropdown-more-navlink">
                 About
               </NavLink>
@@ -35,7 +39,7 @@ const Navbar = () => {
           </div>
 
           <NavLink to="/profile">
-            <img src={heroImg} className="profile-icon"></img>
+            <img src={mock_pfp} className="profile-icon"></img>
           </NavLink>
         </div>
       </nav>

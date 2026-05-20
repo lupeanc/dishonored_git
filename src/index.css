@@ -19,7 +19,12 @@
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
-  background: var(--bg);
+  /* background: var(--bg); */
+  background: no-repeat center url("./assets/Logo.png");
+  background-size: 40%;
+  /* background-image: url("./assets/Logo.png");
+  background-repeat: no-repeat; */
+  /* background-color: rgba(0, 0, 0, 0.6); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +66,10 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+.background-image {
+  opacity: 0.3;
 }
 
 body {

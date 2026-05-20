@@ -23,9 +23,14 @@
 }
 
 .socials-icon {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+    color:rgb(199, 203, 217);;
 }
+
+/* .socials-icon:hover {
+    color:white;
+} */
 
 .socials-title {
     font-size: 15px;
@@ -38,5 +43,9 @@
 .socials-card:hover {
     .socials-title {
         color:rgb(255, 255, 255);
+    }
+
+    .socials-icon {
+        color:white;
     }
 }

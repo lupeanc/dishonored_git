@@ -39,7 +39,8 @@
 .image-fit-ss {
     width:80%;
     height: 200px;
-    object-fit: contain;
+    /* overflow: hidden; */
+    object-fit: cover;
     border:1px solid #3a3a3d;
     /* display: flex; */
     /* float:left; */

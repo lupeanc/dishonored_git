@@ -116,7 +116,7 @@ const CharacterIndexPage = ({ isAdmin }) => {
             onClick={() => {
               setCurrentPage((page) => page + 1);
             }}
-            disabled={currentPage == pagesTotal}
+            disabled={currentPage >= pagesTotal}
           >
             Next
           </button>

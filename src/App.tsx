@@ -30,6 +30,9 @@ import UserProfileInfo from "./components/UserProfileInfo";
 import UserProfilePage from "./pages/UserProfilePage";
 import UserProfileEdit from "./components/UserProfileEdit";
 import SilliesPage from "./pages/SilliesPage";
+import bgImage from "./assets/Logo.png";
+import PollPage from "./pages/PollPage";
+// import bgImage from "./assets/Logo.png"
 
 // const characters: Array<CharacterType> = [
 //   {
@@ -63,7 +66,7 @@ import SilliesPage from "./pages/SilliesPage";
 // ];
 
 const isAdmin = true;
-const username = "claylex-shipper73";
+const username = "username_fancy";
 const description = "pretindem ca scrie ceva acia";
 const pfpImg = "../public/knightref.png";
 
@@ -95,6 +98,7 @@ const router = createBrowserRouter(
       <Route path="/sketches" element={<SketchesPage />} />
       <Route path="/sillies" element={<SilliesPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/polls" element={<PollPage />} />
 
       {/* <Route path="edit-profile" element={} */}
     </Route>,
@@ -106,7 +110,11 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <div>
+        <RouterProvider router={router} />
+        {/* <img src={bgImage} alt=""></img> */}
+      </div>
+
       {/* <UserProfileInfo /> */}
       {/* <NewestPage></NewestPage>
       <NewestSilliesSketch></NewestSilliesSketch>

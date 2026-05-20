@@ -1,5 +1,6 @@
 .main-div-chapter-component {
     margin: 20px 10px 0 10px;
+    /* place-items: center; */
 }
 
 .chapter-title-div {
@@ -16,6 +17,10 @@
     cursor:pointer;
 }
 
+.main-div-chapters-container {
+    place-items: center;
+}
+
 .chapters-container {
     /* margin: 50px; */
     /* justify-content: left; */
@@ -24,8 +29,9 @@
     /* width:1500px; */
     /* justify-content: center; */
     /* text-align: center; */
-    margin-left:30px;
-    display: inline-flex;
+    /* margin: 0 2% 0 2%; */
+    width: 1180px;
+    display: flex;
     /* grid-template-columns: auto auto auto auto auto; */
     flex-wrap: wrap;
     /* justify-content: center; */

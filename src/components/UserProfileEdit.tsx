@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
 import { useState } from "react";
-import heroImg from "../assets/hero.png";
+// import heroImg from "../assets/hero.png";
+import mock_pfp from "/mock_pfp.png";
 import "./UserProfileEdit.css";
 // const saveChanges = (e) => {};
 
@@ -21,7 +22,7 @@ const UserProfileEdit = () => {
       <div className="main-div-user-edit">
         <div className="user-info-container">
           <div className="pfp-container">
-            <img src={heroImg} className="pfp"></img>
+            <img src={mock_pfp} className="pfp"></img>
           </div>
 
           <form onSubmit={saveChanges}>
