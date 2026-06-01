@@ -136,4 +136,4 @@ dist
 .pnp.*
 
 # assets folder
-public/
+# public/
