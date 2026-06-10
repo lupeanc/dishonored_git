@@ -3,19 +3,19 @@
 // import viteLogo from "./assets/vite.svg";
 // import heroImg from "./assets/hero.png";
 import "./App.css";
-import NewestPage from "./components/NewestPage";
-import NewestSilliesSketch from "./components/NewestSilliesSketch";
-import ImagePreview from "./components/ImagePreview";
-import ComicPage from "./components/ComicPage";
-import CharacterCard from "./components/CharacterCard";
-import QnACard from "./components/QnACard";
-import WantMoreBanner from "./components/WantMoreBanner";
+// import NewestPage from "./components/NewestPage";
+// import NewestSilliesSketch from "./components/NewestSilliesSketch";
+// import ImagePreview from "./components/ImagePreview";
+// import ComicPage from "./components/ComicPage";
+// import CharacterCard from "./components/CharacterCard";
+// import QnACard from "./components/QnACard";
+// import WantMoreBanner from "./components/WantMoreBanner";
 import HomePage from "./pages/HomePage";
 import CharacterIndexPage from "./pages/CharacterIndexPage";
-import ContactCard from "./components/ContactCard";
+// import ContactCard from "./components/ContactCard";
 import AboutPage from "./pages/AboutPage";
 import SketchesPage from "./pages/SketchesPage";
-import CharacterIndexTable from "./components/CharacterIndexTable";
+// import CharacterIndexTable from "./components/CharacterIndexTable";
 import ChaptersPage from "./pages/ChaptersPage";
 import {
   createBrowserRouter,
@@ -23,16 +23,17 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { createRoot } from "react-dom/client";
+// import { createRoot } from "react-dom/client";
 import MainLayout from "./layouts/MainLayout";
 import CharacterIndexTablePage from "./pages/CharacterIndexTablePage";
-import UserProfileInfo from "./components/UserProfileInfo";
+// import UserProfileInfo from "./components/UserProfileInfo";
 import UserProfilePage from "./pages/UserProfilePage";
-import UserProfileEdit from "./components/UserProfileEdit";
+// import UserProfileEdit from "./components/UserProfileEdit";
 import SilliesPage from "./pages/SilliesPage";
-import bgImage from "./assets/Logo.png";
+// import bgImage from "./assets/Logo.png";
 import PollPage from "./pages/PollPage";
 // import bgImage from "./assets/Logo.png"
+// const a = 12;
 
 // const characters: Array<CharacterType> = [
 //   {
@@ -87,11 +88,7 @@ const router = createBrowserRouter(
       <Route
         path="/profile"
         element={
-          <UserProfilePage
-            username={username}
-            description={description}
-            pfpImg={pfpImg}
-          />
+          <UserProfilePage username={username} description={description} />
         }
       />
 

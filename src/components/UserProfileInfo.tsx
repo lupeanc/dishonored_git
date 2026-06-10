@@ -3,7 +3,7 @@
 import mock_pfp from "/mock_pfp.png";
 import "./UserProfileInfo.css";
 
-const UserProfileInfo = ({ username, description, pfpImg }) => {
+const UserProfileInfo = ({ username, description }) => {
   return (
     <>
       <div className="main-div-user-profile">

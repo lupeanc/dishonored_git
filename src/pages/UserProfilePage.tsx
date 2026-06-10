@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import UserProfileInfo from "../components/UserProfileInfo";
 import "./UserProfilePage.css";
-import { SlCheck, SlFolder, SlFolderAlt, SlPencil } from "react-icons/sl";
+import { SlFolderAlt, SlPencil } from "react-icons/sl";
 import { useState } from "react";
 import UserProfileEdit from "../components/UserProfileEdit";
 
 // const [username, setUsername] = useState("");
 // const [description, setDescription] = useState("");
 
-const UserProfilePage = ({ username, description, pfpImg }) => {
+const UserProfilePage = ({ username, description }) => {
   const [isEditing, setIsEditing] = useState(false);
   // const [username, setUsername] = useState("");
   // const [description, setDescription] = useState("");
@@ -39,7 +39,7 @@ const UserProfilePage = ({ username, description, pfpImg }) => {
             <UserProfileInfo
               username={username}
               description={description}
-              pfpImg={pfpImg}
+              // pfpImg={pfpImg}
             />
             <button
               type="button"
